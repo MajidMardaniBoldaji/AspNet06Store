@@ -1,9 +1,8 @@
-﻿@model List<Product>
+﻿@model PagedData<Product>
 
-<h1>Welcome to Asp.netCore 6</h1>
-<h2>Majid Mard</h2>
+<h1>Welcome to Majid Shopping </h1>
 
-@foreach (var item in Model)
+@foreach (var item in Model.Data)
 {
  
     <div>
@@ -11,3 +10,4 @@
         <p>@item.Description</p>
     </div>
 }
+<div page-model="Model.PageInfo" page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="" page-class-selected="btn-success"></div>

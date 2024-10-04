@@ -1,4 +1,5 @@
 using AspNet06Store.ShopUI.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +12,13 @@ app.UseDeveloperExceptionPage();
 app.UseStatusCodePages();
 app.UseStaticFiles();
 app.UseRouting();
+
 app.UseEndpoints(endpoints =>
-endpoints.MapDefaultControllerRoute());
+{
+    endpoints.MapControllerRoute("pagination", "/{controller=Home}/{action=Index}/page{PageNumber}");
+    endpoints.MapDefaultControllerRoute();
+}
+);
 
 
 app.Run();
