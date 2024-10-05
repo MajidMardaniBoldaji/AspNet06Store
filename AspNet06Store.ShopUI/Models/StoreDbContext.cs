@@ -21,8 +21,8 @@ namespace AspNet06Store.ShopUI.Models
                     ID = 1,
                     Category = "Iphone",
                     Name = "Apple 16",
-                    Description = "",
-                    Price =100
+                    Description = "This is the best phone and with good camera with 50px and its very beautiful.",
+                    Price = 100
 
                 },
                      new Product
@@ -39,16 +39,16 @@ namespace AspNet06Store.ShopUI.Models
                         ID = 3,
                         Category = "Iphone",
                         Name = "Iphone 12",
-                        Description = "",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
                         Price = 47000
 
-                    }, 
+                    },
                     new Product
                     {
                         ID = 4,
                         Category = "Iphone",
                         Name = "Iphone13",
-                        Description = "",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
                         Price = 0
 
                     },
@@ -57,7 +57,7 @@ namespace AspNet06Store.ShopUI.Models
                         ID = 5,
                         Category = "Samsung",
                         Name = "Samsung A20",
-                        Description = "",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
                         Price = 43000
 
                     },
@@ -66,7 +66,7 @@ namespace AspNet06Store.ShopUI.Models
                         ID = 6,
                         Category = "Samsung",
                         Name = "Samsung A18",
-                        Description = "",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
                         Price = 56000
 
                     },
@@ -75,7 +75,7 @@ namespace AspNet06Store.ShopUI.Models
                         ID = 7,
                         Category = "Iphone",
                         Name = "Iphone11",
-                        Description = "",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
                         Price = 340000
 
                     },
@@ -84,7 +84,7 @@ namespace AspNet06Store.ShopUI.Models
                         ID = 8,
                         Category = "Nokia",
                         Name = "Nokia SS2",
-                        Description = "",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
                         Price = 34000
 
                     },
@@ -93,7 +93,7 @@ namespace AspNet06Store.ShopUI.Models
                         ID = 9,
                         Category = "Iphone",
                         Name = "Iphone14",
-                        Description = "",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
                         Price = 50000
 
                     },
@@ -102,7 +102,25 @@ namespace AspNet06Store.ShopUI.Models
                         ID = 10,
                         Category = "Nokia",
                         Name = "Nokia500",
-                        Description = "",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
+                        Price = 30000
+
+                    },
+                    new Product
+                    {
+                        ID = 11,
+                        Category = "Samsung",
+                        Name = "SamsungA60",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
+                        Price = 30000
+
+                    },
+                    new Product
+                    {
+                        ID = 12,
+                        Category = "Apple",
+                        Name = "Apple12",
+                        Description = "This is the best phone and with good camera with 50px and its very beautiful.",
                         Price = 30000
 
                     }
