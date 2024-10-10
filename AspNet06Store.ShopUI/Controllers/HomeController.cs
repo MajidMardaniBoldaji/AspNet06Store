@@ -1,4 +1,5 @@
 ﻿using AspNet06Store.ShopUI.Models;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNet06Store.ShopUI.Controllers
@@ -12,13 +13,15 @@ namespace AspNet06Store.ShopUI.Controllers
             ProductRepoitory = productRepoitory;
         }
 
-        public IActionResult Index(int pageNumber=1)
+        public IActionResult Index(string category="",int pageNumber=1)
         {
-            return View(ProductRepoitory.GetAll(pageNumber, pageSize));
+            var viewModel = new ViewModels.ProductListViewModel
+            {
+                Data = ProductRepoitory.GetAll(pageNumber, pageSize, category),
+                CurrentCategory = category
+            };
+            return View(viewModel);
         }
-      //  public IActionResult getAll()
-       // {
-            
-        //}
+
     }
 }

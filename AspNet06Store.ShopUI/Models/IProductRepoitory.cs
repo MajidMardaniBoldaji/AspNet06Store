@@ -2,6 +2,6 @@
 {
     public interface IProductRepoitory
     {
-        PagedData<Product> GetAll(int pageNumber,int pageSize);
+        PagedData<Product> GetAll(int pageNumber,int pageSize,string category);
     }
 }

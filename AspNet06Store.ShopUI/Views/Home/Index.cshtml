@@ -1,10 +1,10 @@
-﻿@model PagedData<Product>
+﻿@model ProductListViewModel
 
 <h1>Welcome to Majid Shopping </h1>
 
-@foreach (var item in Model.Data)
+@foreach (var item in Model.Data.Data)
 {
     @Html.Partial("ProductSummary", item);
 
 }
-<div page-model="Model.PageInfo" page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="" page-class-selected="btn-success"></div>
+<div page-model="Model.Data.PageInfo" page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="" page-class-selected="btn-success"></div>

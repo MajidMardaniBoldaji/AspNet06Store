@@ -7,7 +7,7 @@
 
         public int PageNumber { get; set; }
 
-        public int PageCount => (int)Math.Ceiling((double)(TotalCount / PageSize));
+        public int PageCount => (int)Math.Ceiling((double)TotalCount / PageSize);
     }
 
     public class PagedData<T>
