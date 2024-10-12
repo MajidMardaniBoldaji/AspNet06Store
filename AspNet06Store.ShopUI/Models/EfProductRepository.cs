@@ -1,4 +1,5 @@
-﻿namespace AspNet06Store.ShopUI.Models
+﻿
+namespace AspNet06Store.ShopUI.Models
 {
     public class EfProductRepository : IProductRepoitory
     {
@@ -23,6 +24,11 @@
             result.Data = storeDbContext.Products.Where(c=>string.IsNullOrWhiteSpace(category) || c.Category==category).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList(); 
             result.PageInfo.TotalCount = storeDbContext.Products.Where(c => string.IsNullOrWhiteSpace(category) || c.Category == category).Count();
             return result;
+        }
+
+        public List<string> GetCategories()
+        {
+            return storeDbContext.Products.Select(c => c.Category).Distinct().ToList();
         }
     }
 }
