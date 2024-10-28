@@ -30,5 +30,10 @@ namespace AspNet06Store.ShopUI.Models
         {
             return storeDbContext.Products.Select(c => c.Category).Distinct().ToList();
         }
+
+        public Product GetById(int id)
+        {
+            return storeDbContext.Products.FirstOrDefault(p=>p.ID ==id);
+        }
     }
 }
