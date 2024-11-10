@@ -1,21 +1,34 @@
 ﻿@model BasketViewModel
-<table>
+<table class="table table-striped">
+    <tr>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Qantiy</td>
+        <td>SubTotal</td>
+        <td>Remove</td>
+    </tr>
     @foreach (var item in Model.Basket.Items)
     {
         <tr>
-            <td>Name:</td>
             <td>@item.Product.Name</td>
-            <td>Quantity:</td>
             <td>@item.Product.Price</td>
-            <td>Qantiy:</td>
             <td>@item.Quantity</td>
+            <td>@(item.Product.Price * item.Quantity)</td>
+            <td>
+            <form asp-action="RemoveFromBasket" asp-controller="Basket" method="post">
+                <input type="hidden" name="productId"  value="@item.Product.ID"/>
+                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                <input type="Submit" value="Remove" class="btn btn-danger" /> 
+            </form>
+            </td>
+                 
         </tr>
     }
-        <tr>
-            <td>TotlPrice:</td>
-            <td>@Model.Basket.TotalPrice</td>
-        </tr>
-
-    
-
+    <tr>
+        <td colspan="4">TotlPrice:</td>
+        <td>@Model.Basket.TotalPrice()</td>
+    </tr>
 </table>
+<div>
+    <a calss="btn alert-info" name="AAA" href="@Model.ReturnUrl">Continue Shopping </a>
+</div>

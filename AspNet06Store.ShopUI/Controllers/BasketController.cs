@@ -10,16 +10,19 @@ namespace AspNet06Store.ShopUI.Controllers
     public class BasketController : Controller
     {
         private readonly IProductRepoitory productRepoitory;
+        private readonly Basket sessionBasket;
 
-        public BasketController(IProductRepoitory productRepoitory)
+        public BasketController(IProductRepoitory productRepoitory, Basket sessionBasket)
         {
             this.productRepoitory = productRepoitory;
+            this.sessionBasket = sessionBasket;
         }
         public IActionResult Index(string returnUrl)
         {
-            BasketViewModel basketViewModel = new BasketViewModel()
+            BasketViewModel basketViewModel = new()
             {
-                Basket = GetBasket(),
+                // Basket = GetBasket(), deploye in basket
+                Basket = sessionBasket,
                 ReturnUrl = returnUrl
             };
 
@@ -28,27 +31,37 @@ namespace AspNet06Store.ShopUI.Controllers
         [HttpPost]
         public IActionResult AddToBasket(int productId, string returnUrl)
         {
-            var prouct = productRepoitory.GetById(productId);
-            var basket = GetBasket();
-            basket.AddToBasket(prouct, 1);
-            saveToBasket(basket);
-            return RedirectToAction("Index", new { returnUrl = returnUrl });
+            var product = productRepoitory.GetById(productId);
+            //  var basket = GetBasket();
+            sessionBasket.Add(product, 1);
+            //  saveToBasket(basket);
+            return RedirectToAction("Index", new { ReturnUrl = returnUrl });
         }
-        public Basket GetBasket()
-        {
-            var basketItem = HttpContext.Session.GetString("Basket");
-            if (string.IsNullOrEmpty(basketItem))
-            {
-                return new Basket();
-            }
-            else
-                return JsonConvert.DeserializeObject<Basket>(basketItem);
 
-        }
-        public void saveToBasket(Basket basket)
+        public IActionResult RemoveFromBasket(int productId, string returnUrl)
         {
-            HttpContext.Session.SetString("Basket", JsonConvert.SerializeObject(basket));
+            var product = productRepoitory.GetById(productId);
+           // var basket = GetBasket();  //Deploye in Baket
+            sessionBasket.Remove(product);
+           // saveToBasket(basket);
+            return RedirectToAction("Index", new { ReturnUrl = returnUrl });
         }
+        //This two Method Deploye in Basket session Basket
+        //public Basket GetBasket()
+        //{
+        //    var basketItem = HttpContext.Session.GetString("Basket");
+        //    if (string.IsNullOrEmpty(basketItem))
+        //    {
+        //        return new Basket();
+        //    }
+        //    else
+        //        return JsonConvert.DeserializeObject<Basket>(basketItem);
+
+        //}
+        //public void saveToBasket(Basket basket)
+        //{
+        //    HttpContext.Session.SetString("Basket", JsonConvert.SerializeObject(basket));
+        //}
 
     }
 }
