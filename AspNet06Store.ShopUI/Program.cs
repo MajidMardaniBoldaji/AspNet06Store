@@ -7,6 +7,7 @@ builder.Services.AddControllersWithViews();
 var CS = builder.Configuration.GetConnectionString("CNString");
 builder.Services.AddDbContext<StoreDbContext>(option => option.UseSqlServer(CS));
 builder.Services.AddScoped<IProductRepoitory,EfProductRepository>();
+builder.Services.AddScoped<IOrderRepository,EFOrderRepository>();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

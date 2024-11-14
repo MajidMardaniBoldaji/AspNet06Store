@@ -1,0 +1,14 @@
+﻿@model CheckOutViewModel
+
+<form method="post" asp-action="CheckOut" asp-controller="Order">
+    <div asp-validation-summary="All"></div>
+    <label>Name:</label>
+    <input type="text" asp-for="Name" />
+    <label>Address:</label>
+    <input type="text" asp-for="Address" />
+    <label>City:</label>
+    <input type="text" asp-for="City" />
+    <div>
+        <input type="submit" value="Save Order" />
+    </div>
+</form>
