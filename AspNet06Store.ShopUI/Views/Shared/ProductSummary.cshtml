@@ -1,11 +1,11 @@
 ﻿@model Product
 
-<div class="card card-body">
-    <h4>@Model.Name<span><small>@Model.Price</small></span></h4>
+<div class="col-md-4">
+    <h4>@Model.Name<span><small class="price-tag pt-1" > Price:@Model.Price</small></span></h4>
     <form asp-controller="Basket" asp-action="AddToBasket" method="post">
-        <input type="hidden"  value="@Model.ID" name="productId"/>
-        <input type="hidden" value="@ViewContext.HttpContext.Request.Path" name="returnUrl" />
-        <input type="submit" value="Add To basket" />
+        <input type="hidden" value="@Model.ID" name="productId" class="dropdown"/>
+        <input type="hidden" value="@ViewContext.HttpContext.Request.Path" name="returnUrl" class="dropdown" />
+        <input type="submit" value="Add To basket" class="dropdown" />
     </form>  
-    <p>@Model.Description</p>
+    <p class="dropdown" />>@Model.Description</p>
 </div>

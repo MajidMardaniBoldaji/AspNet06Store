@@ -1,0 +1,28 @@
+﻿@model UserViewModel
+
+<html>
+<body>
+    <h4>Users</h4>
+    <h4>Form User</h4>
+    <form asp-action="Inser" asp-controller="User" method="post">
+        <label>UserName:</label>
+        <input type="text" asp-for="UserName" />
+        <label>Password:</label>
+        <input type="text" asp-for="Password" />
+        <label>FullName:</label>
+        <input type="text" asp-for="FullName" />
+        <label>Tell:</label>
+        <input type="text" asp-for="Tell" />
+        <label>Mobile:</label>
+        <input type="text" asp-for="Mobile" />
+        <label>City:</label>
+        <input type="text" asp-for="City" />
+        <label>Email:</label>
+        <input type="text" asp-for="Email" />
+        <label>Address:</label>
+        <input type="text" asp-for="Address" />
+        <hr/>
+        <input type="submit" value="Insert" />
+    </form>
+</body>
+</html>

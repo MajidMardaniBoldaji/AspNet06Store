@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\CheckOut\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

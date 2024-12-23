@@ -9,6 +9,7 @@ namespace AspNet06Store.ShopUI.Models
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<User> Users { get; set; }  
         public StoreDbContext(DbContextOptions options) : base(options)
         {
 

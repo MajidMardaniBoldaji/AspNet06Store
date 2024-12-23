@@ -7,7 +7,7 @@ namespace AspNet06Store.ShopUI.Controllers
     public class HomeController : Controller
     {
         public IProductRepoitory ProductRepoitory { get; }
-        private int pageSize = 4;
+        private int pageSize =4;
         public HomeController(IProductRepoitory productRepoitory)
         {
             ProductRepoitory = productRepoitory;
