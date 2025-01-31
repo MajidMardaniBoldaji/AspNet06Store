@@ -1,0 +1,23 @@
+﻿@model User
+<h1>Add User</h1>
+<form asp-controller="User" asp-action="AddUser" method="post">
+    <label>UserName:</label>
+    <input type="text" asp-for="@Model.UserName" />
+    <label>Password:</label>
+    <input type="text" asp-for="@Model.Password" />
+    <label>FullName:</label>
+    <input type="text" asp-for="@Model.FullName" />
+    <label>Tell:</label>
+    <input type="text" asp-for="@Model.Tell" />
+    <label>Mobile:</label>
+    <input type="text" asp-for="@Model.Mobile" />
+    <label>Email:</label>
+    <input type="text" asp-for="@Model.Email" />
+    <label>City:</label>
+    <input type="text" asp-for="@Model.City" />
+    <label>Address:</label>
+    <input type="text" asp-for="@Model.Address" />
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+</form>
