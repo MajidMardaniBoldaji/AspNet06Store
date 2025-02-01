@@ -8,21 +8,9 @@ namespace AspNet06Store.ShopUI.Models
     public class User
     {     
         public int Id { get; set; }
-        [AllowNull]
-        public string UserName { get; set; }
-        [AllowNull]
-        public string Password { get; set; }
-        [AllowNull]
-        public string FullName { get; set; }
-        [AllowNull]
-        public string City { get; set; }
-        [AllowNull]
-        public string Address { get; set; }
-        [AllowNull]
-        public string Tell { get; set; }
-        [AllowNull]
-        public string Mobile { get; set; }
-        [AllowNull]
         public string Email { get; set; }
+        public string PasswordHash { get; set; }
+        public string? FullName { get; set; }
+        public bool IsConfirm{ get; set; }
     }
 }

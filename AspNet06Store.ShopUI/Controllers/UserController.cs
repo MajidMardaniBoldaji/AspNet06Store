@@ -1,7 +1,7 @@
-﻿using AspNet06Store.ShopUI.Models;
-using AspNet06Store.ShopUI.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AspNet06Store.ShopUI.Models;
+using AspNet06Store.ShopUI.ViewModels;
 
 namespace AspNet06Store.ShopUI.Controllers
 {
@@ -48,12 +48,12 @@ namespace AspNet06Store.ShopUI.Controllers
             var curreuntUser = dbContext.Users.Find(user.Id);
             if (curreuntUser != null) // Fixing the null check on the found user
             {
-                curreuntUser.UserName = user.UserName;
-                curreuntUser.Password = user.Password;
+                //curreuntUser.UserName = user.UserName;
+                //curreuntUser.Password = user.Password;
 
-                curreuntUser.City = user.City;
-                curreuntUser.Email = user.Email;
-                curreuntUser.Address = user.Address;
+                //curreuntUser.City = user.City;
+                //curreuntUser.Email = user.Email;
+                //curreuntUser.Address = user.Address;
 
                 dbContext.SaveChanges(); // Save changes to the database
             }
@@ -62,20 +62,45 @@ namespace AspNet06Store.ShopUI.Controllers
 
         // Action to display the Add User form
         [HttpGet("AddUser")]
-        public IActionResult AddUser()
+        public IActionResult Register()
         {
             return View();
         }
         // Action to handle form submission
        [HttpPost("AddUser")]
-        public IActionResult AddUser( User user)
+        public async Task<IActionResult> Register( RegisterVm vm )
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                dbContext.Users.Add(user);
-                dbContext.SaveChanges();
+                return View(vm); // اگر اعتبارسنجی‌ها شکست خورد، فرم را دوباره به کاربر نشان می‌دهیم
             }
-            return RedirectToAction("GetAll");
+
+            // چک کردن اینکه ایمیل تکراری نباشد
+            if (dbContext.Users.Any(u => u.Email == vm.Email))
+            {
+                ModelState.AddModelError("", "این ایمیل قبلاً ثبت شده است");
+                return View(vm);
+            }
+
+            var newUser = new User
+            {
+                FullName = vm.FullName,
+                Email = vm.Email,
+                PasswordHash = vm.Password, // در واقع باید پسورد را هش کنید
+                IsConfirm = false // ایمیل تایید نشده
+            };
+
+            dbContext.Users.Add(newUser);
+            await dbContext.SaveChangesAsync();
+
+            // ارسال ایمیل تایید (در این مرحله نیاورده‌ایم، ولی بعداً می‌توانید اضافه کنید)
+            return RedirectToAction("CompleteRegister");
         }
+        public IActionResult CompleteRegister()
+        {
+            return View();
+        }
+
+        
     }
 }

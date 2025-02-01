@@ -1,7 +1,9 @@
 ﻿@model ProductListViewModel
 
 <h1>Welcome to Majid Shopping </h1>
-<a calss="btn alert-success" asp-action="GetAll" asp-controller="User">Users</a>
+<a calss="btn alert-success" asp-action="GetAll" asp-controller="User">Users</a><br />
+<a calss="btn alert-success" asp-action="Login" asp-controller="Auth">Login</a>
+
 @foreach (var item in Model.Data.Data)
 {
     @Html.Partial("ProductSummary", item);

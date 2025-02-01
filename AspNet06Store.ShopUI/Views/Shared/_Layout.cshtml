@@ -4,6 +4,31 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @using System.Security.Claims
+    @{
+        var user = User.Identity.IsAuthenticated ? User : null;
+        var userEmail = user?.FindFirst(ClaimTypes.Email)?.Value;
+    }
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">سایت من</a>
+
+        <div class="ml-auto">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <span class="navbar-text">
+                    خوش آمدید، @userEmail!
+                </span>
+                <a class="btn btn-danger btn-sm ml-2" href="@Url.Action("Logout", "Auth")">خروج</a>
+            }
+            else
+            {
+                <a class="btn btn-primary btn-sm" href="@Url.Action("Login", "Auth")">ورود</a>
+                <a class="btn btn-success btn-sm ml-2" href="@Url.Action("Register", "Auth")">ثبت نام</a>
+            }
+        </div>
+    </nav>
+
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
 </head>
 <body>

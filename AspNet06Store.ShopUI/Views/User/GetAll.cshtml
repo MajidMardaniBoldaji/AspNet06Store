@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<User>
 
 <h2>Users</h2>
-<a asp-controller="User" asp-action="AddUser" type="submit" class="btn btn-link">Register</a>
+<a asp-controller="User" asp-action="Register" type="submit" class="btn btn-link">Register</a>
 <table class="table">
     <thead>
         <tr>
@@ -16,10 +16,9 @@
         @foreach (var user in Model)
         {
             <tr>
-                <td>@user.UserName</td>
-                <td>@user.Password</td>
+                <td>@user.Email</td>
                 <td>@user.FullName</td>
-                <td>@user.Address</td>
+                <td>@user.PasswordHash</td>
                 <td>
                     <form asp-action="Detail" asp-controller="User" method="post">
                         <a asp-action="Details" asp-route-id="@user.Id">Details</a>

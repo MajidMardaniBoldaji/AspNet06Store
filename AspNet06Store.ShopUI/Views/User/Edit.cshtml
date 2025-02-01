@@ -1,7 +1,7 @@
 ﻿<h1>Edit User</h1>
 @model User
 <form asp-controller="User"  asp-action="Edit" method="post">
-    <div asp-validation-summary="All"></div>
+@*     <div asp-validation-summary="All"></div>
     <input type="hidden" asp-for="@Model.Id" />
     <label>UserName:</label>
     <input type="text" asp-for="@Model.UserName" />
@@ -21,5 +21,5 @@
     <input type="text" asp-for="@Model.Address" />
     <div>
         <input type="submit" value="Edit" />
-    </div>
+    </div> *@
 </form>

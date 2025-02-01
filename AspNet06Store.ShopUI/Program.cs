@@ -1,4 +1,5 @@
 using AspNet06Store.ShopUI.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,13 @@ builder.Services.AddScoped<IOrderRepository,EFOrderRepository>();
 //builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Auth/Login";
+        options.LogoutPath = "/Auth/Logout";
+    });
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<Basket>(c => SessionBasket.GetBasket(c));
 var app = builder.Build();
@@ -19,6 +27,10 @@ app.UseStatusCodePages();
 app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
+
 
 app.UseEndpoints(endpoints =>
 {

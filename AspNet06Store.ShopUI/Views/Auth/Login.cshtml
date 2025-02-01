@@ -1,0 +1,28 @@
+﻿@model LoginVm
+
+@{
+    ViewData["Title"] = "ورود";
+}
+
+<h2>ورود</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Email">ایمیل</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model?.Email" required />
+        <span class="text-danger">@Html.ValidationMessageFor(m => m.Email)</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Password">پسورد</label>
+        <input type="password" class="form-control" id="Password" name="Password" required />
+        <span class="text-danger">@Html.ValidationMessageFor(m => m.Password)</span>
+    </div>
+
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="RememberMe" name="RememberMe" />
+        <label class="form-check-label" for="RememberMe">مرا به خاطر بسپار</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">ورود</button>
+</form>
